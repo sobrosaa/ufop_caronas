@@ -135,6 +135,25 @@ Consulte o arquivo `README.md`. Em resumo:
 
 A versão final integra frontend, backend e PostgreSQL em uma aplicação executável localmente. O sistema cobre o fluxo principal de publicação e reserva de caronas, além de oferecer histórico e visão administrativa.
 
+## 14 Principais desafios e dificuldades
+
+Durante o desenvolvimento, os principais desafios foram configurar corretamente a comunicação entre o Node.js e o PostgreSQL, implementar a autenticação com JWT e controlar as permissões de usuários comuns e administradores.
+
+Também foram necessários ajustes na disponibilização das páginas estáticas pelo Express, na formatação das datas retornadas pelo PostgreSQL e na atualização da quantidade de vagas após reservas e cancelamentos.
+
+Esses problemas foram resolvidos por meio da organização das rotas, uso de middlewares de autenticação, consultas parametrizadas e gatilhos no banco de dados.
+
+## 15 Outras funcionalidades implementadas
+
+Além do fluxo principal de caronas, foram implementados:
+
+- Painel administrativo com indicadores.
+- Relatório das rotas mais utilizadas.
+- Listagem de usuários e suas atividades.
+- Controle de acesso baseado no perfil do usuário.
+- Endpoint para verificar a conexão com o banco de dados.
+- Atualização automática das vagas por meio de gatilho no PostgreSQL.
+- Interface responsiva.
 ## 14. Limitações e trabalhos futuros
 
 - Validar institucionalmente os e-mails dos estudantes.
@@ -143,3 +162,11 @@ A versão final integra frontend, backend e PostgreSQL em uma aplicação execut
 - Adicionar avaliação de usuários.
 - Criar testes automatizados.
 - Publicar a aplicação em ambiente de produção.
+
+## 15 Referências
+
+- Documentação oficial do Node.js.
+- Documentação oficial do Express.
+- Documentação oficial do PostgreSQL.
+- MDN Web Docs — HTML, CSS e JavaScript.
+- Documentação do JSON Web Token.
