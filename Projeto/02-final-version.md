@@ -131,29 +131,11 @@ Consulte o arquivo `README.md`. Em resumo:
 5. Executar `npm start`.
 6. Abrir `http://localhost:3000`.
 
-## 13. Validação realizada
-
-Preencher a data e os responsáveis após executar os testes finais. Não marcar um item sem realmente validá-lo no sistema.
-
-Checklist recomendado:
-
-- [x] Página inicial e navegação
-- [x] Cadastro
-- [x] Login e logout
-- [x] Busca com filtros
-- [x] Oferta de carona
-- [x] Reserva e cancelamento
-- [x] Histórico
-- [x] Listagem de passageiros
-- [x] Painel administrativo
-- [x] Bloqueio de acesso administrativo para usuário comum
-- [x] Execução em outro computador seguindo apenas o README
-
-## 14. Resultados
+## 13. Resultados
 
 A versão final integra frontend, backend e PostgreSQL em uma aplicação executável localmente. O sistema cobre o fluxo principal de publicação e reserva de caronas, além de oferecer histórico e visão administrativa.
 
-## 15. Limitações e trabalhos futuros
+## 14. Limitações e trabalhos futuros
 
 - Validar institucionalmente os e-mails dos estudantes.
 - Implementar recuperação de senha.
