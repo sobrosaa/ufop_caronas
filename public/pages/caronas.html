@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buscar Caronas — UFOP</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
   <nav class="navbar" id="navbar"></nav>
 
@@ -56,8 +58,10 @@
       </div>
       <div id="modalConteudo"></div>
       <div style="display: flex; gap: 10px; margin-top: 1.5rem;">
-        <button onclick="fecharModal()" class="btn btn-sm" style="background: var(--creme-escuro); color: var(--texto); flex:1;">Cancelar</button>
-        <button onclick="confirmarReserva()" class="btn btn-verde btn-sm" id="btnConfirmar" style="flex:2;">✅ Confirmar Reserva</button>
+        <button onclick="fecharModal()" class="btn btn-sm"
+          style="background: var(--creme-escuro); color: var(--texto); flex:1;">Cancelar</button>
+        <button onclick="confirmarReserva()" class="btn btn-verde btn-sm" id="btnConfirmar" style="flex:2;">✅ Confirmar
+          Reserva</button>
       </div>
     </div>
   </div>
@@ -110,7 +114,7 @@
           </div>
           <div class="carona-meta">
             <div class="meta-item"><div class="meta-icon">📅</div>${data}</div>
-            <div class="meta-item"><div class="meta-icon">🕐</div>${c.horario.slice(0,5)}</div>
+            <div class="meta-item"><div class="meta-icon">🕐</div>${c.horario.slice(0, 5)}</div>
             <div class="meta-item"><div class="meta-icon">👤</div>${c.motorista_nome}</div>
             ${c.valor_contribuicao > 0 ? `<div class="meta-item"><div class="meta-icon">💰</div>R$ ${parseFloat(c.valor_contribuicao).toFixed(2)}</div>` : ''}
           </div>
@@ -118,37 +122,62 @@
           <div class="carona-footer">
             <span class="vagas-badge ${vagasClass}">🪑 ${vagas} vaga${vagas !== 1 ? 's' : ''}</span>
             ${isMotorista
-              ? `<span style="font-size: 0.82rem; color: var(--texto-suave); font-style: italic;">Sua carona</span>`
-              : `<button onclick="abrirModal(${JSON.stringify(c).replace(/"/g,'&quot;')})" class="btn btn-primary btn-sm" ${vagas === 0 ? 'disabled' : ''}>
+          ? `<span style="font-size: 0.82rem; color: var(--texto-suave); font-style: italic;">Sua carona</span>`
+          : `<button onclick="abrirModal(${JSON.stringify(c).replace(/"/g, '&quot;')})" class="btn btn-primary btn-sm" ${vagas === 0 ? 'disabled' : ''}>
                   ${vagas === 0 ? 'Sem vagas' : 'Reservar vaga →'}
                 </button>`
-            }
+        }
           </div>
         </div>`;
     }
-
     function abrirModal(carona) {
       caronaAtual = carona;
-      const data = formatarDataBR(carona.data_viagem, {weekday: 'long', day: '2-digit', month: 'long'});
-};
+
+      const data = formatarDataBR(carona.data_viagem, {
+        weekday: 'long',
+        day: '2-digit',
+        month: 'long'
+      });
+
       document.getElementById('modalConteudo').innerHTML = `
-        <div style="background: var(--creme); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1rem;">
-          <div class="carona-rota" style="margin-bottom: 0.75rem;">
-            <div class="carona-cidade">${carona.origem}</div>
-            <div class="carona-seta"></div>
-            <div class="carona-cidade">${carona.destino}</div>
-          </div>
-          <div class="carona-meta">
-            <div class="meta-item"><div class="meta-icon">📅</div>${data}</div>
-            <div class="meta-item"><div class="meta-icon">🕐</div>${carona.horario.slice(0,5)}</div>
-            <div class="meta-item"><div class="meta-icon">👤</div>${carona.motorista_nome}</div>
-          </div>
+    <div style="background: var(--creme); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1rem;">
+      <div class="carona-rota" style="margin-bottom: 0.75rem;">
+        <div class="carona-cidade">${carona.origem}</div>
+        <div class="carona-seta"></div>
+        <div class="carona-cidade">${carona.destino}</div>
+      </div>
+
+      <div class="carona-meta">
+        <div class="meta-item">
+          <div class="meta-icon">📅</div>
+          ${data}
         </div>
-        ${carona.valor_contribuicao > 0 
-          ? `<p style="background: #FEF3C7; padding: 10px 14px; border-radius: 8px; font-size: 0.88rem; color: #92400E;"> 💰 Contribuição sugerida: <strong>R$ ${parseFloat(carona.valor_contribuicao).toFixed(2)}</strong></p>`
-          : ''}
-      `;
+
+        <div class="meta-item">
+          <div class="meta-icon">🕐</div>
+          ${carona.horario.slice(0, 5)}
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-icon">👤</div>
+          ${carona.motorista_nome}
+        </div>
+      </div>
+    </div>
+
+    ${carona.valor_contribuicao > 0
+          ? `
+          <p style="background: #FEF3C7; padding: 10px 14px; border-radius: 8px; font-size: 0.88rem; color: #92400E;">
+            💰 Contribuição sugerida:
+            <strong>R$ ${parseFloat(carona.valor_contribuicao).toFixed(2)}</strong>
+          </p>
+        `
+          : ''
+        }
+  `;
+
       document.getElementById('modalReserva').classList.add('open');
+    }
 
     function fecharModal() {
       document.getElementById('modalReserva').classList.remove('open');
@@ -173,4 +202,5 @@
     buscarCaronas();
   </script>
 </body>
+
 </html>
